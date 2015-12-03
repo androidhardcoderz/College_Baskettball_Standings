@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">College Basketball Standings</string>
+    <string name="action_settings">Settings</string>
+    <string name="preaseasonFile">preseason.csv</string>
+    <string name="schedule_key">SCHEDULE</string>
+    <string name="app_next_key_placement">046b267f-c8a0-4a56-9a47-86b45e074890</string>
+    <string name="title_activity_rankings">RankingsActivity</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="API_FILE_CALL">https://nccabb.s3.amazonaws.com/collegebasketballstandingsjsonfile.txt</string>
+
+</resources>

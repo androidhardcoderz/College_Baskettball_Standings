@@ -7,5 +7,6 @@
     <string name="title_activity_rankings">RankingsActivity</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="API_FILE_CALL">https://nccabb.s3.amazonaws.com/collegebasketballstandingsjsonfile.txt</string>
+    <string name="title_activity_main">MainActivity</string>
 
 </resources>

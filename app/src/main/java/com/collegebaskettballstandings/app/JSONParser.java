@@ -4,6 +4,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Scott on 11/21/2015.
  */
@@ -16,15 +19,15 @@ public class JSONParser {
 
     }
 
-    public void parseResult(String string) throws JSONException {
+    public List<Team> parseResult(String string) throws JSONException {
 
-        Rankings rankings = new Rankings();
+        List<Team> teams = new ArrayList<>();
 
         JSONArray rankingsArray = new JSONObject(string).getJSONArray("rankings");
 
         System.out.println(rankingsArray.length() + " LENGTH OF RANKINGS ARRAY");
 
-        for(int i = 0; i < rankingsArray.length();i++){
+        for(int i = 0; i < 25;i++){
 
             JSONObject teamObject = rankingsArray.getJSONObject(i);
 
@@ -38,7 +41,7 @@ public class JSONParser {
                 team.setRank(teamObject.getString("rank"));
                 team.setWins(teamObject.getString("wins"));
                 team.setLosses(teamObject.getString("losses"));
-                team.setPrev_rank(teamObject.getString("prev_rank"));
+                getPreviousRanking(teamObject, team);
 
                 System.out.println(team.getName() + " " + i);
 
@@ -47,8 +50,18 @@ public class JSONParser {
                 jse.printStackTrace();
             }
 
-            iTeamLoaded.onTeamLoaded(team);
+            teams.add(team);
 
+        }
+
+        return teams;
+    }
+
+    private void getPreviousRanking(JSONObject teamObject, Team team)  {
+        try {
+            team.setPrev_rank(teamObject.getString("prev_rank"));
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
     }
 

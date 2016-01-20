@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:padding="16dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp">
 
 <android.support.v4.widget.NestedScrollView
     android:layout_width="match_parent"
@@ -13,8 +13,7 @@
     android:id="@+id/scrollView"
     android:fillViewport="true"
     android:layout_gravity="fill_vertical"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    android:padding="8dp">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 <LinearLayout
     android:orientation="vertical"
@@ -22,10 +21,9 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
         android:id="@+id/titleTextView"
         android:gravity="center_vertical|center_horizontal"
         android:layout_gravity="center_horizontal"

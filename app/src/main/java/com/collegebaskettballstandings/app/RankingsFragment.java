@@ -12,10 +12,11 @@ import android.widget.ProgressBar;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.appbrain.AppBrainBanner;
-
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -69,18 +70,18 @@ public class RankingsFragment extends Fragment {
         return view;
     }
 
-    public void showData(){
+    public void showData(String string){
 
         //start Asynctask to load teams into layout
         layoutLoaderTask = new LayoutLoaderTask();
-        layoutLoaderTask.execute(SavedData.getJSONData(getActivity()));
+        layoutLoaderTask.execute(string);
     }
 
 
     private void loadLayoutsInView(Team team){
 
         TeamLayout lay = new TeamLayout(getActivity(),team);
-        layout.addView(lay, layout.getChildCount() - 1);
+        layout.addView(lay, layout.getChildCount());
 
     }
 
@@ -96,10 +97,6 @@ public class RankingsFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        AppBrainBanner banner = new AppBrainBanner(getActivity());
-        layout.addView(banner,layout.getChildCount());
-
     }
 
     @Override
@@ -140,10 +137,16 @@ public class RankingsFragment extends Fragment {
          */
         @Override
         protected String doInBackground(String... params) {
+
             JSONParser parser = new JSONParser(iTeamLoaded);
+            List<Team> teams = new ArrayList<Team>();
 
             try {
-                parser.parseResult(params[0]);
+                teams = parser.parseResult(params[0]);
+                for(Team team: teams){
+                    publishProgress(team);
+                }
+
                 return new JSONObject(params[0]).getJSONObject("poll").getString("name") + "\n Week: "
                         + new JSONObject(params[0]).getString("week").replace("W","");
             } catch (JSONException e) {

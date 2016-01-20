@@ -1,0 +1,10 @@
+<fragment xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:name="com.collegebaskettballstandings.app.RankingsFragment"
+    class="com.collegebaskettballstandings.app.RankingsFragment"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:layout="@layout/rankings_fragment"
+    android:id="@+id/rankfrag">
+
+</fragment>
